@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Ambiguity Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Grammar Ambiguity Lab</h1>
+            <p>Analyze context-free grammars and visualize structural divergence</p>
+        </header>
+        <main>
+            <section class="controls">
+                <div class="card">
+                    <div class="grammar-header">
+                        <h3>Grammar Rules</h3>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="case-sensitive-toggle">
+                            <span class="slider"></span>
+                            <span class="toggle-label">A-z</span>
+                        </label>
+                    </div>
+                    <textarea id="grammar-input" spellcheck="false" placeholder="E -> E + E | id"> E -> E + E
+E -> E * E
+E -> id</textarea>
+                    <div class="presets">
+                        <button onclick="loadPreset('expression')">Arithmetic</button>
+                        <button onclick="loadPreset('dangling')">Dangling Else</button>
+                        <button onclick="loadPreset('binary')">Binary String</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Input String</h3>
+                    <input type="text" id="string-input" value="id + id * id" spellcheck="false"
+                        placeholder="Enter string (e.g. id + id)">
+                    <div class="button-group">
+                        <button id="simulate-btn" class="primary-btn">Check Ambiguity</button>
+                        <button id="find-ambiguity-btn" class="secondary-btn">Auto-Find</button>
+                    </div>
+                </div>
+            </section>
+            <section id="results-section" class="hidden">
+                <div class="status-bar" id="status-bar"></div>
+                <div id="tree-container"></div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; Theory of Computation - Grammar Simulator</p>
+        </footer>
+    </div>
+    <script src="parser.js"></script>
+    <script src="ui.js"></script>
+</body>
+
+</html>
